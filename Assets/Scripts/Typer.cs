@@ -5,19 +5,19 @@ using UnityEngine.UI;
 
 public class Typer : MonoBehaviour
 {
-    public Text wordOutput = null;
+    public Text wordOutput = null;                      // the word that is dispalyed in the game
 
-    private string remainingWord = string.Empty;
-    private string currentWord = "ada is funny";
+    private string remainingWord = string.Empty;        // the remainder of the word while we are typing.
+    private string currentWord = "hello world";        // the word we are trying to complete
 
     private void SetCurrentWord(){
         //the word will get the words from the word bank
         SetRemainingWord(currentWord);
     }
 
-    private void SetRemainingWord(string newRemainingWord){
-        remainingWord = newRemainingWord;
-        wordOutput.text = remainingWord;
+    private void SetRemainingWord(string newRemainingWord){         //setting up the remainder of the words
+        remainingWord = newRemainingWord;                           //
+        wordOutput.text = remainingWord;                            //setting the remainingWord into wordOutput where it will be displayed on user screen.
     }
 
     void Start()
@@ -33,10 +33,7 @@ public class Typer : MonoBehaviour
     private void CheckInput(){
         if(Input.anyKeyDown){
             string inputtedWord = Input.inputString;
-
-            if(inputtedWord.Length == 1){           // takes in only one key input at a time
-                EnterLetter(inputtedWord);
-            }
+            EnterLetter(inputtedWord); 
         }
     }
 
@@ -50,7 +47,7 @@ public class Typer : MonoBehaviour
     }
     
     bool IsLetterCorrect(string enteredLetter){
-        return remainingWord.IndexOf(enteredLetter) == 0;
+        return remainingWord.IndexOf(enteredLetter) == 0;       //checks if the entered inputs value is the index of 0 , which means that is it the first letter
     }
 
     private void RemoveLetter(){        //removes the letter if it is correct input
@@ -59,7 +56,7 @@ public class Typer : MonoBehaviour
     }
 
     private bool IsWordFinished(){
-        return remainingWord.Length ==0;
+        return remainingWord.Length == 0;
     }
 
 }
