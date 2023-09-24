@@ -8,10 +8,9 @@ public class Typer : MonoBehaviour
     public Text wordOutput = null;                      // the word that is dispalyed in the game
 
     private string remainingWord = string.Empty;        // the remainder of the word while we are typing.
-    private string currentWord = "hello world";        // the word we are trying to complete
+    private string currentWord = "hello world";        // the word we are trying to complete only in the begining (the word here will be gathered by the word bank)
 
     private void SetCurrentWord(){
-        //the word will get the words from the word bank
         SetRemainingWord(currentWord);
     }
 
@@ -27,36 +26,23 @@ public class Typer : MonoBehaviour
 
     void Update()
     {
-        CheckInput();
+        CheckInput();                                                // constantly being checked for imputs 
     }
 
     private void CheckInput(){
         if(Input.anyKeyDown){
             string inputtedWord = Input.inputString;
-            EnterLetter(inputtedWord); 
-        }
-    }
-
-    private void EnterLetter(string typedLetter){
-        if(IsLetterCorrect(typedLetter)){
-            RemoveLetter();
-            if(IsWordFinished()){
-                SetCurrentWord();
+            if(inputtedWord == remainingWord.Substring(0,1)){
+                RemoveLetter();
+                if(remainingWord.Length == 0){
+                    SetCurrentWord();
+                }
             }
         }
     }
     
-    bool IsLetterCorrect(string enteredLetter){
-        return remainingWord.IndexOf(enteredLetter) == 0;       //checks if the entered inputs value is the index of 0 , which means that is it the first letter
+    private void RemoveLetter(){                                    //removes the letter if it is correct input
+        string remainingWordRemoved = remainingWord.Remove(0, 1);         // Removes the first character of the string
+        SetRemainingWord(remainingWordRemoved);                           // updates the subtracted new word as the remainingWord
     }
-
-    private void RemoveLetter(){        //removes the letter if it is correct input
-        string subtractedWord = remainingWord.Remove(0, 1);   // Removes the first character of the string
-        SetRemainingWord(subtractedWord);
-    }
-
-    private bool IsWordFinished(){
-        return remainingWord.Length == 0;
-    }
-
 }
