@@ -19,3 +19,25 @@ this whole design was put all together with the help of tthis flowchart
 
 here is an example:
 ![Alt text](image.png) after the letter H is inputted this is how it will look ![Alt text](image-1.png)
+
+
+24/09/2023
+USING FISHER-YATES SHUFFLE EXPLAIN THE CODE AND TELL THE STORIES OF HOW IT WAS DONE SHOWING FROM CODE.
+
+System.Linq was used to have methods that shortens the code.
+
+The Bank GameObjects main purpose is to get the words from the text file into a List object. this list of objects needs to be randomized, the reason for that is so that user wont play the same words in the same order. however these words after they are randomly listed in a List, they will be taken out one by one for display on users scren.
+
+the List where the File words will be stored is set as a global variable wordBankFileWords. To be able to Read the files i have used the System.IO namespace, this namespace has this inbuilt method called ReadAllLines("WordBank.txt") that takes in the file name as an argument, this method is basically opening the indicated file and reads it line by line and returns it in a string[] array. To put the read lines into a list i have used the in-built method called ToList() from the System.Linq namespace. This ToList() converts the string[] array into List instances.
+
+this here is the line of code that runs this action:
+![Alt text](image-9.png)
+
+
+After the wordBankFileWords is created it will require to be randomized to provide non-consecutive gameplay. The Fisher-Yates algorithm was used to randomize the elements of this list. The reason this algorithm is used was because there is an equal chance that each element will be in any position.(https://saturncloud.io/blog/fisheryates-shuffling-algorithm-in-c-a-comprehensive-guide/#:~:text=The%20Fisher%2DYates%20algorithm%20ensures,in%20a%20truly%20random%20permutation.)
+
+Fisher-Yates iterates through the elements of list backwards by decrementing, starting with the last element it will randomly chose another element to swap places, and next iteration the same thing will happen but with the DECREMENTING INDEX causing this process to result in total random permutation. ASK SOMEONE IF THIS IS WRITTEN CORRECTLY.
+![Alt text](image-11.png)
+
+to get the word that will be displayed the GetWord() method is used, in this method the last element of the wordBankFileWords is acquired to be returned as a string. to be used in theSetCurrentWord() method in Typer Class, where the word for display is set.
+![Alt text](image-12.png)

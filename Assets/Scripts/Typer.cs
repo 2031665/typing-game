@@ -6,11 +6,12 @@ using UnityEngine.UI;
 public class Typer : MonoBehaviour
 {
     public Text wordOutput = null;                      // the word that is dispalyed in the game
-
+    public Bank wordBank = null;
     private string remainingWord = string.Empty;        // the remainder of the word while we are typing.
-    private string currentWord = "hello world";        // the word we are trying to complete only in the begining (the word here will be gathered by the word bank)
+    private string currentWord = string.Empty;        // the word we are trying to complete only in the begining (the word here will be gathered by the word bank)
 
     private void SetCurrentWord(){
+        currentWord = wordBank.GetWord();
         SetRemainingWord(currentWord);
     }
 
