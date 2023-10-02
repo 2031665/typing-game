@@ -7,6 +7,9 @@ public class Typer : MonoBehaviour
 {
     public Text wordOutput = null;                      // the word that is dispalyed in the game
     public Bank wordBank = null;
+
+    public Keyboard keyInput = null;
+
     private string remainingWord = string.Empty;        // the remainder of the word while we are typing.
     private string currentWord = string.Empty;        // the word we are trying to complete only in the begining (the word here will be gathered by the word bank)
 
@@ -31,15 +34,14 @@ public class Typer : MonoBehaviour
     }
 
     private void CheckInput(){
-        if(Input.anyKeyDown){
-            string inputtedWord = Input.inputString;
-            if(inputtedWord == remainingWord.Substring(0,1)){
-                RemoveLetter();
-                if(remainingWord.Length == 0){
-                    SetCurrentWord();
-                }
+        string inputtedWord = keyInput.SetWord();
+        if(inputtedWord == remainingWord.Substring(0,1)){
+            RemoveLetter();
+            if(remainingWord.Length == 0){
+                SetCurrentWord();
             }
         }
+        inputtedWord = null;
     }
     
     private void RemoveLetter(){                                    //removes the letter if it is correct input
