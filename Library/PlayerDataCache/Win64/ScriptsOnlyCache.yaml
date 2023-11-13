@@ -1063,4 +1063,4 @@ ScriptsOnlyBuild:
   platform: 19
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: C:/Users/ada-a/Documents/Code/typingGamerun/typing-game.exe
+  playerPath: C:/Users/ada-a/Documents/Code/typing_game_test/typing-game.exe

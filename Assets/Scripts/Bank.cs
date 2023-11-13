@@ -6,7 +6,7 @@ using System.Linq;
 
 public class Bank : MonoBehaviour
 {
-    private List<string> wordBankFileWords = File.ReadAllLines("WordBank.txt").ToList();
+    private List<string> wordBankFileWords = File.ReadAllLines("../typing_game_test/wordbank/WordBank.txt").ToList();
 
     private void Awake(){
         Randomize(wordBankFileWords);
