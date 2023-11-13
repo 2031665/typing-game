@@ -28,12 +28,12 @@ public class Timer : MonoBehaviour
 
         if(isThereLimit && ((countUp && currentTime <= Limit) || (!countUp && currentTime >= Limit))){
             currentTime = Limit;
-            time.text = currentTime.ToString();
+            time.text = currentTime.ToString("0");
             time.color = Color.red;
             isLimitExceeded = true;
 
         }else{
-            time.text = currentTime.ToString();
+            time.text = currentTime.ToString("0");
             time.color = Color.white;
             isLimitExceeded = false;
         }
