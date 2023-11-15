@@ -58,12 +58,12 @@ public class Typer : MonoBehaviour
         if(Timer.isLimitExceeded == true){
             int finishedWordPoint = 20;
             currentPoint += finishedWordPoint;
-            pointOutput.text = currentPoint.ToString();
+            pointOutput.text = "Score: "+ Mathf.Round(currentPoint);
         }
         else{
             int finishedWordPoint = 100;
             currentPoint += finishedWordPoint;
-            pointOutput.text = currentPoint.ToString();
+            pointOutput.text = "Score: "+ Mathf.Round(currentPoint);
         }
 
     }
